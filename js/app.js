@@ -28,12 +28,9 @@ function initMap() {
 			animation: google.maps.Animation.DROP,
 			map: map
 		});
-
-		//Centrando y acercando mapa
 		map.setZoom(18);
 		map.setCenter({lat:latitud, lng:longitud});
 	}
-	//Esta función se ejecutará en el caso haya un fallo al encontrar nuestra ubicación
 	var funcionError = function (error) {
 		alert("Tenemos un problema con encontrar tu ubicación");
 	}
