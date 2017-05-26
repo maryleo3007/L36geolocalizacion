@@ -2,3 +2,37 @@
   width: 100%;
   height: 90vh;
 }
+#encuentrame, #trazaruta{
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+}
+.sectionMap{
+  padding-top: 50px;
+}
+.headertop{
+  background-color: #FAA719;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.headertop input{
+  background-color:transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+
+.miInput::-webkit-input-placeholder:after{
+  content:'ingresa el destino';
+  color: white;
+}
+#tarifa{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  color: white;
+  position: absolute;
+  top: 50%;
+
+}
