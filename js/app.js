@@ -21,7 +21,25 @@ function initMap() {
   new google.maps.places.Autocomplete(inputDestino);
 
   var directionsService = new google.maps.DirectionsService;
+  console.log("directionsService"+directionsService.route);
   var directionsDisplay = new google.maps.DirectionsRenderer;
+console.log("directionsDisplay"+directionsDisplay);
+  var latitud,longitud,miUbicacion;
+	var funcionExito = function(posicion) {
+		latitud = posicion.coords.latitude;
+		longitud = posicion.coords.longitude;
+
+		miUbicacion = new google.maps.Marker({
+			position: {lat:latitud, lng:longitud},
+			animation: google.maps.Animation.DROP,
+			map: map
+		});
+		map.setZoom(18);
+		map.setCenter({lat:latitud, lng:longitud});
+	}
+	var funcionError = function (error) {
+		alert("Tenemos un problema con encontrar tu ubicación");
+	}
 
   var calculateAndDisplayRoute = function (directionsService, directionsDisplay) {
     directionsService.route({
@@ -45,6 +63,12 @@ function initMap() {
         window.alert("no encontramos la ruta");
       }
       directionsDisplay.setDirections(response);
+
+      if (miUbicacion!==undefined) {
+          miUbicacion.setMap(null);
+      }else {
+          window.alert("no encontramos la ruta");
+      }
     });
   }
 
@@ -55,25 +79,8 @@ function initMap() {
   }
 
   document.getElementById('trazaruta').addEventListener("click",trazaruta);
-  
+
   document.getElementById("encuentrame").addEventListener("click",buscar);
-
-	var latitud,longitud;
-	var funcionExito = function(posicion) {
-		latitud = posicion.coords.latitude;
-		longitud = posicion.coords.longitude;
-
-		var miUbicacion = new google.maps.Marker({
-			position: {lat:latitud, lng:longitud},
-			animation: google.maps.Animation.DROP,
-			map: map
-		});
-		map.setZoom(18);
-		map.setCenter({lat:latitud, lng:longitud});
-	}
-	var funcionError = function (error) {
-		alert("Tenemos un problema con encontrar tu ubicación");
-	}
 
 
 }
